@@ -1,0 +1,33 @@
+.stafi_data_col{
+    width:100%;
+    min-height: 142px;
+    background-color: #2B3239;
+    padding:25px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .title_line{
+        display: flex;
+        justify-content: space-between;
+        .title{
+            font-size: 16px;
+        } 
+    }
+    .amount_line{
+        font-size: 26px;
+        font-weight: bold;
+        text-align: right;
+    }
+}
+
+.stafi_chart_data_col{
+    height:334px;
+    background-color: #2B3239;
+    padding:25px 22px;
+    display: flex;
+    flex-direction: column;
+    .chart{
+        flex:1;
+        height:250px;
+    }
+}

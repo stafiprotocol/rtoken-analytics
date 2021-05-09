@@ -1,0 +1,27 @@
+.left_slider{
+    width:76px;
+    background-color: #2B3239;
+    min-height: 700px;
+    .logoPanel{
+        display: flex;
+        justify-content: center;
+        img{ 
+            width:51px; 
+            margin-top: 15px;
+            margin-bottom: 17px;
+        }
+    }
+    .icons{
+        width:100%;
+        .icon_item{
+            width:100%;
+            text-align: center;
+            margin-bottom: 33px;
+            cursor: pointer;
+            img{
+                width:36px;
+                height:36px;
+            }
+        }
+    }
+}
