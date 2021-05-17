@@ -17,7 +17,11 @@ export default function Index(props:Props){
                 trigger: 'axis',
                 axisPointer: {   
                     type: 'line'        
-                }
+                },
+                // formatter:(params:any)=>{
+                //     console.log(params,"======params");
+                //     return 
+                // }
             }, 
             xAxis: [
                 {
