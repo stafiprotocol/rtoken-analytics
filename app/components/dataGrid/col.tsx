@@ -5,7 +5,8 @@ import './col.scss';
 type Props={
     title:string,
     amount:string,
-    toolTip?:string
+    toolTip?:string,
+    unit?:string
 }
 export default function Index(props:Props){
     return  <Col span={24 / 4}>
@@ -19,7 +20,7 @@ export default function Index(props:Props){
                         </div>
                     </div>
                     <div className="amount_line">
-                        ${props.amount}
+                        {props.unit}{props.amount}
                     </div>
             </div>
     </Col>

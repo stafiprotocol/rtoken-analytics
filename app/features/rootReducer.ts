@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import { History,createBrowserHistory } from 'history';  
 import {connectRouter} from 'connected-react-router';  
+import dashboardReducer from './dashboardClice';
 
 export default function createRootReducer(history?: History) {
   return combineReducers({  
-    router:connectRouter(history)
+    router:connectRouter(history),
+    dashboardModule:dashboardReducer,
   });
 }

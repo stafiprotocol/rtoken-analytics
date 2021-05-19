@@ -17,12 +17,12 @@ export default function Index(props:Props){
                 trigger: 'axis',
                 axisPointer: {   
                     type: 'line'        
-                },
-                // formatter:(params:any)=>{
+                }, 
+                 // formatter:(params:any)=>{
                 //     console.log(params,"======params");
                 //     return 
                 // }
-            }, 
+            },  
             xAxis: [
                 {
                     type: 'category',
@@ -33,13 +33,18 @@ export default function Index(props:Props){
                     axisLabel: { interval: 0, rotate: -30,color:"#A5A5A5" }, 
                 }
             ],
+            grid: {
+                left: '12%',
+                right:'6%'  
+            },
             yAxis: [
                 {
-                    type: 'value',
+                    type: 'value', 
                     axisLabel: {
                         formatter: '{value} M',
-                        color:"#FFFFFF" 
+                        color:"#FFFFFF" , 
                     },
+                      
                     splitLine: {
                         show: true,
                         lineStyle:{ 

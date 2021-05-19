@@ -6,6 +6,6 @@
   return (local || demo)
 }
 export default {
-   
+  webApiSite:"https://rtoken-api.stafi.io"
 } 
  
