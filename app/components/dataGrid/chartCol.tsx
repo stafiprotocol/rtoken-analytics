@@ -5,9 +5,14 @@ import ReactEcharts from 'echarts-for-react'
 import './col.scss';
 type Props={
     title:string, 
-    barColor:string,
+    barColor:BarColor,
     data:any[],
     xData:any[]
+}
+
+export enum BarColor{
+    left="#40CB92",
+    right="#ED3C9A"
 }
 export default function Index(props:Props){
     const getChartOption=()=>{
