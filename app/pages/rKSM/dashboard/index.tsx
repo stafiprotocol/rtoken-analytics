@@ -2,29 +2,35 @@ import React, { useEffect } from 'react';
 import DataRow from '@components/dataGrid/row';
 import DataCol from '@components/dataGrid/col';
 import ChartCol from '@components/dataGrid/chartCol';
-import { getRToken,Rtoken,Cycle} from '@features/dashboardClice'
+import { getRToken,Rtoken,Cycle,initData} from '@features/dashboardClice'
 import { useDispatch, useSelector } from 'react-redux';
+import NumberUtil from '@util/numberUtil'
+import {rSymbol} from '@keyring/defaults'
 export default function Index(props:any){
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getRToken(Rtoken.rKsm,Cycle.week));
-    },[]);
-
-    const {data}=useSelector((state:any)=>{
+        dispatch(initData(rSymbol.Ksm))
+    },[]); 
+    const {data,erc20Amount,ratio,totalIssuance,free}=useSelector((state:any)=>{ 
         return {
-            data:state.dashboardModule.rToken
+            data:state.dashboardModule.rToken,
+            erc20Amount:state.ETHModule.ercRKSMBalance,
+            ratio:state.dashboardModule.ratio,
+            totalIssuance:state.dashboardModule.totalIssuance,
+            free:state.dashboardModule.free,
         }
     })  
     return <div>
           <DataRow>
-          <DataCol title={"STAKED rKSM VALUE"} unit="$" amount={data?data.info.stakeValue:"--"} toolTip={"test"}/>
+          <DataCol title={"STAKED rKSM VALUE"} unit="$" amount={NumberUtil.handleFisAmountToFixed(ratio*totalIssuance)} toolTip={"test"}/>
             <DataCol title={"rKSM VALUE"} unit="$" amount={data?data.info.rtokenValue:"--"} toolTip={"test"}/>
             <DataCol title={"rKSM VALUE (ERC20)"} unit="$" amount={data?data.info.erc20RtokenValue:"--"} toolTip={"test"}/>
-            <DataCol title={"TOTAL FEE"} unit="$"  amount={data?data.info.feesValue:"--"} toolTip={"test"}/>
-            <DataCol title={"rKSM/KSM"} amount={data?data.info.rate:"--"} toolTip={"test"}/>
+            <DataCol title={"TOTAL FEE"} unit="$"  amount={NumberUtil.handleFisAmountToFixed(totalIssuance*free)} toolTip={"test"}/>
+            <DataCol title={"rKSM/KSM"} amount={NumberUtil.handleFisAmountRateToFixed(ratio)} toolTip={"test"}/>
             <DataCol title={"rKSM PRICE"} unit="$" amount={data?data.info.price:"--"} toolTip={"test"}/>
-            <DataCol title={"rKSM AMOUNT"} unit="$" amount={data?data.info.rtokenAmount:"--"} toolTip={"test"}/>
-            <DataCol title={"rKSM AMOUNT (ERC20)"} unit="$" amount={data?data.info.erc20RtokenAmount:"--"} toolTip={"test"}/>
+            <DataCol title={"rKSM AMOUNT"} unit="$" amount={totalIssuance} toolTip={"test"}/>
+            <DataCol title={"rKSM AMOUNT (ERC20)"} unit="$" amount={erc20Amount} toolTip={"test"}/>
             <DataCol title={"ORIGINAL VALIDATORS"} amount={data?data.info.validators:"--"} toolTip={"test"}/>
             <DataCol title={"UNIQUE USERS"} amount={data?data.info.users:"--"} toolTip={"test"}/>
             <DataCol title={"STAKED TRANSACTIONS"} unit="$"  amount={data?data.info.stakeTxs:"--"} toolTip={"test"}/>

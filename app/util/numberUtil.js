@@ -108,7 +108,7 @@ export default {
 
   // The return string contains 6 decimal places, including 0
   handleFisAmountToFixed(amount) { 
-    if(amount=="--"){
+    if(amount=="--" || isNaN(amount)){
       return "--"
     }
     return (Math.floor(amount * 1000000) / 1000000).toFixed(6) || "--";
@@ -124,6 +124,9 @@ export default {
 
   // Returns a string containing 6 decimal places, including 0
   handleFisAmountRateToFixed(amount) {
+    if(amount=="--"){
+      return "--"
+    }
     return this.handleEthAmountRound(amount).toFixed(6);
   },
 
