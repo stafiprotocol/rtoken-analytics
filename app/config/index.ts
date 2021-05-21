@@ -56,6 +56,34 @@ export default {
       return '0x680ab46340aa2189515b49fd35ac8a5bd66e78de';
     }  
   },
+  stafiUserDepositAddress:()=> {
+    if(process.env.NODE_ENV=="production" &&  !isdev()){
+      return '0x430cf6dd3e289adae63b50ff661d6bba2dbb3f28';
+    }else{
+      return '0x310b80843c56591bd3c403f877ab665f68530cef';
+    }   
+  },
+  stafiNodeDepositAddress:() => { 
+    if(process.env.NODE_ENV=="production" &&  !isdev()){
+      return '0x50db2ce93c8b1f6771c985b6b840b587349496a0';
+    }else{
+      return '0x0313d2b2e9ef926012881a7e33482a957bed265c';
+    }   
+  },
+  stafiStakingPoolManagerAddress:()=> {
+    if(process.env.NODE_ENV=="production" &&  !isdev()){
+      return '0x1c9890c9cb9925a8651c10b5f557d744bafbed5a';
+    }else{
+      return '0xa84ec99b9c9d16f769d9909a2466923f4dddd282';
+    }  
+  },
+  stafiStakingPoolQueueAddress:()=> { 
+    if(process.env.NODE_ENV=="production" &&  !isdev()){
+      return '0xc59ea6cebb8089a0330800f50946610977c4fc96';
+    }else{
+      return '0xc8985dd9da3c9d35eaac6b29b5f6b7ecc3f765ca';
+    }  
+  },
   bridgeAddress:()=>{
     if(process.env.NODE_ENV=="production" &&  !isdev()){
       return '0x13ef51f0525df6045267baed411f535d86586bc1';

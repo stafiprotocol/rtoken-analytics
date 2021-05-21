@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import DataRow from '@components/dataGrid/row';
 import DataCol from '@components/dataGrid/col';
 import ChartCol,{BarColor} from '@components/dataGrid/chartCol';
-import { getRToken,Rtoken,Cycle,initData} from '@features/dashboardClice'
+import { getRToken,Rtoken,Cycle,getFree} from '@features/dashboardClice';
+import {rTokenRate,getStakingPoolStatus} from '@features/ETHClice'
 import { useDispatch, useSelector } from 'react-redux';
 import NumberUtil from '@util/numberUtil'
 import {rSymbol} from '@keyring/defaults'
@@ -10,26 +11,29 @@ export default function Index(props:any){
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getRToken(Rtoken.rEth,Cycle.week));
-        // dispatch(initData(rSymbol.Eth))
+        dispatch(rTokenRate());
+        dispatch(getStakingPoolStatus());
+        dispatch(getFree(rSymbol.Eth))
     },[]); 
-    const {data,erc20Amount,ratio,totalIssuance}=useSelector((state:any)=>{ 
+    const {data,erc20Amount,ratio,totalStakedAmount,free}=useSelector((state:any)=>{ 
         return {
             data:state.dashboardModule.rToken,
-            erc20Amount:state.ETHModule.ercRETHBalance,
-            ratio:state.dashboardModule.ratio,
-            totalIssuance:state.dashboardModule.totalIssuance
+            erc20Amount:state.ETHModule.ercETHBalance,
+            ratio:state.ETHModule.ratio,
+            totalStakedAmount:state.ETHModule.totalStakedAmount,
+            free:state.dashboardModule.free,
         }
     })  
     return <div>
           <DataRow>
-          <DataCol title={"STAKED rETH VALUE"} unit="$" amount={NumberUtil.handleFisAmountToFixed(ratio*totalIssuance)} toolTip={"test"}/>
+          <DataCol title={"STAKED rETH VALUE"} unit="$" amount={totalStakedAmount} toolTip={"test"}/>
             <DataCol title={"rETH VALUE"} unit="$" amount={data?data.info.rtokenValue:"--"} toolTip={"test"}/>
-            <DataCol title={"rETH VALUE (ERC20)"} unit="$" amount={data?data.info.erc20RtokenValue:"--"} toolTip={"test"}/>
-            <DataCol title={"TOTAL FEE"} unit="$"  amount={data?data.info.feesValue:"--"} toolTip={"test"}/>
-            <DataCol title={"rETH/ETH"} amount={NumberUtil.handleFisAmountRateToFixed(ratio)} toolTip={"test"}/>
+            
+            <DataCol title={"TOTAL FEE"} unit="$"  amount={NumberUtil.handleFisAmountToFixed(totalStakedAmount*free)} toolTip={"test"}/>
+            <DataCol title={"rETH/ETH"} amount={ratio} toolTip={"test"}/>
             <DataCol title={"rETH PRICE"} unit="$" amount={data?data.info.price:"--"} toolTip={"test"}/>
-            <DataCol title={"rETH AMOUNT"} unit="$" amount={totalIssuance} toolTip={"test"}/>
-            <DataCol title={"rETH AMOUNT (ERC20)"} unit="$" amount={erc20Amount} toolTip={"test"}/>
+            <DataCol title={"rETH AMOUNT"} unit="$" amount={erc20Amount} toolTip={"test"}/>
+            
             <DataCol title={"ORIGINAL VALIDATORS"} amount={data?data.info.validators:"--"} toolTip={"test"}/>
             <DataCol title={"UNIQUE USERS"} amount={data?data.info.users:"--"} toolTip={"test"}/>
             <DataCol title={"STAKED TRANSACTIONS"} unit="$"  amount={data?data.info.stakeTxs:"--"} toolTip={"test"}/>

@@ -14,8 +14,7 @@ const DashboardClice = createSlice({
       rToken:null,
       ratio:"--",
       free:"--", 
-      totalIssuance:'--',
-      unbondCommission:'--'
+      totalIssuance:'--', 
   },
   reducers: {  
       setCollect:function(state,{payload}){
@@ -32,9 +31,6 @@ const DashboardClice = createSlice({
       },
       setTotalIssuance:function(state,{payload}){
           state.totalIssuance=payload
-      },
-      setUnbondCommission:function(state,{payload}){
-          state.unbondCommission=payload
       }
   },
 });
@@ -44,8 +40,7 @@ export const {
     setRToken,
     setRatio,
     setFree,
-    setTotalIssuance,
-    setUnbondCommission
+    setTotalIssuance
 }=DashboardClice.actions
 
  
@@ -64,8 +59,7 @@ export const getRToken=(rtoken:Rtoken,cycle:Cycle):AppThunk=>async (dispatch,get
 export const initData=(type:rSymbol):AppThunk=>async (dispatch,getState)=>{
     dispatch(rTokenRate(type));    
     dispatch(getFree(type));
-    dispatch(getTotalIssuance(type));
-    dispatch(getUnbondCommission());
+    dispatch(getTotalIssuance(type)); 
 }
 export const rTokenRate=(type:rSymbol):AppThunk=>async (dispatch,getState)=>{
     dispatch(setRatio("--"))
@@ -88,8 +82,7 @@ export const getFree=(type:rSymbol):AppThunk=>async (dispatch,getState)=>{
         dispatch(setFree(NumberUtil.fisAmountToHuman(account.free) || "--"));
     } catch (error) {
         dispatch(setFree("--"));
-    }
-
+    } 
 }
  
  export const  getTotalIssuance=(type:rSymbol):AppThunk=>async (dispatch,getState)=>{
@@ -101,13 +94,7 @@ export const getFree=(type:rSymbol):AppThunk=>async (dispatch,getState)=>{
     dispatch(setTotalIssuance(totalIssuance))
 }
 
-export const  getUnbondCommission=():AppThunk=>async (dispatch,getState)=>{
-    dispatch(setUnbondCommission("--")) 
-    const stafiApi = await stafiServer.createStafiApi();
-    const result=await stafiApi.query.rTokenSeries.unbondCommission();
-    const unbondCommission = NumberUtil.fisFeeToHuman(result.toJSON());
-    dispatch(setUnbondCommission(unbondCommission)) 
-}
+ 
 export enum Rtoken {
     rKsm = 'rKsm',
     rDot = 'rDot',
