@@ -23,7 +23,7 @@ export default function Index(props:any){
             <DataCol title={"TOTAL FEE"} unit="$" amount={data?data.info.feesValue:"--"} toolTip={"test"}/>
             <DataCol title={"ORIGINAL VALIDATORS"} amount={data?data.info.validators:"--"} toolTip={"test"}/>
             <DataCol title={"UNIQUE USERS"} amount={data?data.info.users:"--"} toolTip={"test"}/>
-            <DataCol title={"STAKED TRANSACTIONS"} unit="$" amount={data?data.info.stakeTxs:"--"} toolTip={"test"}/>
+            <DataCol title={"STAKED TRANSACTIONS"} amount={data?data.info.stakeTxs:"--"} toolTip={"test"}/>
             <DataCol title={"REDEEM VALUE "} unit="$" amount={data?data.info.reddemValue:"--"} toolTip={"test"}/>
         </DataRow>
         <DataRow>
