@@ -21,14 +21,15 @@ export default function Index(props:any){
             free:state.dashboardModule.free,
         }
     })  
+    console.log(totalIssuance,free,"=======asdf")
     return <div>
           <DataRow>
           <DataCol title={"STAKED rFIS VALUE"} unit="$" amount={NumberUtil.handleFisAmountToFixed(ratio*totalIssuance)} toolTip={"test"}/>
             <DataCol title={"rFIS VALUE"} unit="$" amount={data?data.info.rtokenValue:"--"} toolTip={"test"}/>
-            <DataCol title={"rFIS VALUE (ERC20)"} unit="$" amount={data?data.info.erc20RtokenValue:"--"} toolTip={"test"}/>
-            <DataCol title={"TOTAL FEE"} unit="$"  amount={NumberUtil.handleFisAmountToFixed(totalIssuance*free)} toolTip={"test"}/>
+            <DataCol title={"rFIS VALUE (ERC20)"} unit="$" amount={data?NumberUtil.handleFisAmountToFixed((data.info.rtokenPrice*erc20Amount)):"--"}  toolTip={"test"}/>
+            <DataCol title={"TOTAL FEE"} unit="$"  amount={data?NumberUtil.handleFisAmountToFixed(data.info.rtokenPrice*free):"--"} toolTip={"test"}/>
             <DataCol title={"rFIS/FIS"} amount={NumberUtil.handleFisAmountRateToFixed(ratio)} toolTip={"test"}/>
-            <DataCol title={"rFIS PRICE"} unit="$" amount={data?data.info.price:"--"} toolTip={"test"}/>
+            <DataCol title={"rFIS PRICE"} unit="$" amount={data?data.info.rtokenPrice:"--"} toolTip={"test"}/>
             <DataCol title={"rFIS AMOUNT"} amount={totalIssuance} toolTip={"test"}/>
             <DataCol title={"rFIS AMOUNT (ERC20)"}   amount={erc20Amount} toolTip={"test"}/>
             <DataCol title={"ORIGINAL VALIDATORS"} amount={data?data.info.validators:"--"} toolTip={"test"}/>

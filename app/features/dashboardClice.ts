@@ -45,12 +45,12 @@ export const {
 
  
 export const getCollect=():AppThunk=>async (dispatch,getState)=>{  
-     const result=await dashboardServer.getCollect(); 
+     const result=await dashboardServer.getCollect(Cycle.week); 
      if(result.status==="80000"){
         dispatch(setCollect(result.data))
      }
 }
-export const getRToken=(rtoken:Rtoken,cycle:Cycle):AppThunk=>async (dispatch,getState)=>{  
+export const getRToken=(rtoken:Rtoken,cycle:Cycle):AppThunk=>async (dispatch,getState)=>{ 
     const result=await dashboardServer.getRToken(rtoken,cycle); 
     if(result.status==="80000"){
        dispatch(setRToken(result.data))
@@ -79,6 +79,7 @@ export const getFree=(type:rSymbol):AppThunk=>async (dispatch,getState)=>{
         const protocolFeeAccount = await stafiApi.query.rTokenLedger.receiver();  
         const accountData = await stafiApi.query.rBalances.account(type, protocolFeeAccount.toJSON());
         const account=accountData.toJSON(); 
+        console.log("account.free:",NumberUtil.fisAmountToHuman(account.free));
         dispatch(setFree(NumberUtil.fisAmountToHuman(account.free) || "--"));
     } catch (error) {
         dispatch(setFree("--"));
@@ -91,16 +92,17 @@ export const getFree=(type:rSymbol):AppThunk=>async (dispatch,getState)=>{
     const  result =await stafiApi.query.rBalances.totalIssuance(type) 
     let totalIssuance:any = NumberUtil.tokenAmountToHuman(result.toJSON(),type);
     totalIssuance = NumberUtil.handleFisAmountToFixed(totalIssuance); 
+    console.log("totalIssuance:",totalIssuance);
     dispatch(setTotalIssuance(totalIssuance))
 }
 
  
 export enum Rtoken {
-    rKsm = 'rKsm',
-    rDot = 'rDot',
-    rAtom = 'rAtom', 
-    rEth="rEth",
-    rFis="rFis"
+    rKsm = 'Rksm',
+    rDot = 'Rdot',
+    rAtom = 'Ratom', 
+    rEth="Reth",
+    rFis="Rfis"
   }
   export enum Cycle {
     day=1,

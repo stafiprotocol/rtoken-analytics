@@ -21,14 +21,15 @@ export default function Index(props:any){
             free:state.dashboardModule.free
         }
     })  
+ 
     return <div>
           <DataRow>
           <DataCol title={"STAKED rDOT VALUE"} unit="$" amount={NumberUtil.handleFisAmountToFixed(ratio*totalIssuance)} toolTip={"test"}/>
             <DataCol title={"rDOT VALUE"} unit="$" amount={data?data.info.rtokenValue:"--"} toolTip={"test"}/>
-            <DataCol title={"rDOT VALUE (ERC20)"} unit="$" amount={data?NumberUtil.handleFisAmountToFixed((data.info.price*erc20Amount)):"--"} toolTip={"test"}/>
-            <DataCol title={"TOTAL FEE"} unit="$"  amount={NumberUtil.handleFisAmountToFixed(totalIssuance*free)} toolTip={"test"}/>
+            <DataCol title={"rDOT VALUE (ERC20)"} unit="$" amount={data?NumberUtil.handleFisAmountToFixed((data.info.rtokenPrice*erc20Amount)):"--"} toolTip={"test"}/>
+            <DataCol title={"TOTAL FEE"} unit="$"  amount={data?NumberUtil.handleFisAmountToFixed(Number(data.info.rtokenPrice)*Number(free)):"--"} toolTip={"test"}/>
             <DataCol title={"rDOT/DOT"} amount={NumberUtil.handleFisAmountRateToFixed(ratio)} toolTip={"test"}/>
-            <DataCol title={"rDOT PRICE"} unit="$" amount={data?data.info.price:"--"} toolTip={"test"}/>
+            <DataCol title={"rDOT PRICE"} unit="$" amount={data?data.info.rtokenPrice:"--"} toolTip={"test"}/>
             <DataCol title={"rDOT AMOUNT"}   amount={totalIssuance} toolTip={"test"}/>
             <DataCol title={"rDOT AMOUNT (ERC20)"}  amount={erc20Amount} toolTip={"test"}/>
             <DataCol title={"ORIGINAL VALIDATORS"} amount={data?data.info.validators:"--"} toolTip={"test"}/>

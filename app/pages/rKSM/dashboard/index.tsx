@@ -26,9 +26,9 @@ export default function Index(props:any){
           <DataCol title={"STAKED rKSM VALUE"} unit="$" amount={NumberUtil.handleFisAmountToFixed(ratio*totalIssuance)} toolTip={"test"}/>
             <DataCol title={"rKSM VALUE"} unit="$" amount={data?data.info.rtokenValue:"--"} toolTip={"test"}/>
             <DataCol title={"rKSM VALUE (ERC20)"} unit="$" amount={data?data.info.erc20RtokenValue:"--"} toolTip={"test"}/>
-            <DataCol title={"TOTAL FEE"} unit="$"  amount={NumberUtil.handleFisAmountToFixed(totalIssuance*free)} toolTip={"test"}/>
+            <DataCol title={"TOTAL FEE"} unit="$"  amount={data?NumberUtil.handleFisAmountToFixed(data.info.rtokenPrice*free):"--"} toolTip={"test"}/>
             <DataCol title={"rKSM/KSM"} amount={NumberUtil.handleFisAmountRateToFixed(ratio)} toolTip={"test"}/>
-            <DataCol title={"rKSM PRICE"} unit="$" amount={data?data.info.price:"--"} toolTip={"test"}/>
+            <DataCol title={"rKSM PRICE"} unit="$" amount={data?data.info.rtokenPrice:"--"} toolTip={"test"}/>
             <DataCol title={"rKSM AMOUNT"} amount={totalIssuance} toolTip={"test"}/>
             <DataCol title={"rKSM AMOUNT (ERC20)"}  amount={erc20Amount} toolTip={"test"}/>
             <DataCol title={"ORIGINAL VALIDATORS"} amount={data?data.info.validators:"--"} toolTip={"test"}/>

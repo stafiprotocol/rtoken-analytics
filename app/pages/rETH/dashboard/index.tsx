@@ -13,7 +13,7 @@ export default function Index(props:any){
         dispatch(getRToken(Rtoken.rEth,Cycle.week));
         dispatch(rTokenRate());
         dispatch(getStakingPoolStatus());
-        dispatch(getFree(rSymbol.Eth))
+        // dispatch(getFree(rSymbol.Eth))
     },[]); 
     const {data,erc20Amount,ratio,totalStakedAmount,free}=useSelector((state:any)=>{ 
         return {
@@ -29,9 +29,9 @@ export default function Index(props:any){
           <DataCol title={"STAKED rETH VALUE"} unit="$" amount={totalStakedAmount} toolTip={"test"}/>
             <DataCol title={"rETH VALUE"} unit="$" amount={data?data.info.rtokenValue:"--"} toolTip={"test"}/>
             
-            <DataCol title={"TOTAL FEE"} unit="$"  amount={NumberUtil.handleFisAmountToFixed(totalStakedAmount*free)} toolTip={"test"}/>
+            <DataCol title={"TOTAL FEE"} unit="$"  amount={data?data.info.feesValue:"--"} toolTip={"test"}/>
             <DataCol title={"rETH/ETH"} amount={ratio} toolTip={"test"}/>
-            <DataCol title={"rETH PRICE"} unit="$" amount={data?data.info.price:"--"} toolTip={"test"}/>
+            <DataCol title={"rETH PRICE"} unit="$" amount={data?data.info.rtokenPrice:"--"} toolTip={"test"}/>
             <DataCol title={"rETH AMOUNT"}  amount={erc20Amount} toolTip={"test"}/>
             
             <DataCol title={"ORIGINAL VALIDATORS"} amount={data?data.info.validators:"--"} toolTip={"test"}/>

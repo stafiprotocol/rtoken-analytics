@@ -3,16 +3,18 @@ import {api} from '@util/http';
 import moment from 'moment'
 
 export default class Dashboard{
-    getRToken(rtoken:string,cycle:number){
-        const url="webapi/stat/rtoken"; 
+    getRToken(rsymbol:string,cycle:number){
+        const url="webapi/rtoken/statdetail"; 
         return api.post(url,{
             timestamp:moment().valueOf(),
-            rtoken,
+            rsymbol,
             cycle
         })
     }
-    getCollect(){
-        const url="webapi/stat/collect"
-        return api.post(url)
+    getCollect(cycle:number){
+        const url="webapi/rtoken/statinfo"
+        return api.post(url,{
+            cycle
+        })
     }
 }

@@ -46,7 +46,12 @@ export default function Index(props:Props){
                 {
                     type: 'value', 
                     axisLabel: {
-                        formatter: '{value} M',
+                        formatter:(value:any)=>{
+                            if(value>1000000){
+                                return `${value/1000000} M`
+                            }
+                            return value
+                        },
                         color:"#FFFFFF" , 
                     },
                       
