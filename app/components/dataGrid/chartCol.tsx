@@ -48,7 +48,7 @@ export default function Index(props:Props){
                     axisLabel: {
                         formatter:(value:any)=>{
                             if(value>1000000){
-                                return `${value/1000000} M`
+                                return `${value/1000000}M`
                             }
                             return value
                         },
@@ -58,7 +58,8 @@ export default function Index(props:Props){
                     splitLine: {
                         show: true,
                         lineStyle:{ 
-                            color:"#A5A5A5"
+                            color:"#444755",
+                            width:2
                         }
                     }
         

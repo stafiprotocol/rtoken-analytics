@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '@images/logo.png';
+import logo from '@images/logo.svg';
 import home_svg from '@images/home.png';
 import fis_svg from '@images/fis.svg'
 import dot_svg from '@images/dot.svg'

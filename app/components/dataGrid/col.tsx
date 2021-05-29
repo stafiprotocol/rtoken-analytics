@@ -16,7 +16,7 @@ export default function Index(props:Props){
                             {props.title}
                         </div>
                         <div className="tips">
-                          <Tooltip title={props.toolTip}> <img src={doubt} /></Tooltip> 
+                          {/* <Tooltip title={props.toolTip}> <img src={doubt} /></Tooltip>  */}
                         </div>
                     </div>
                     <div className="amount_line">
