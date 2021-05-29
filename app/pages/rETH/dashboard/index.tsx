@@ -43,9 +43,9 @@ export default function Index(props:any){
             <ChartCol data={data?data.list.rate.data:[]} xData={data?data.list.rate.yData:[]} title="rETH : ETH  RATE" barColor={BarColor.left}/>
             <ChartCol data={data?data.list.price.data:[]} xData={data?data.list.price.yData:[]} title="rETH PRICE" barColor={BarColor.right}/>
             <ChartCol data={data?data.list.mint.data:[]} xData={data?data.list.mint.yData:[]} title="MINTED rETH (NATIVE)" barColor={BarColor.left}/>
-            <ChartCol data={data?data.list.erc20Mint.data:[]} xData={data?data.list.erc20Mint.yData:[]} title="MINTED rETH (ERC20)" barColor={BarColor.right}/>
-            <ChartCol data={data?data.list.stakeValue.data:[]} xData={data?data.list.stakeValue.yData:[]} title="STAKED rETH VALUE IN STAFI PER WEEK" barColor={BarColor.left}/>
-            <ChartCol data={data?data.list.reddemValue.data:[]} xData={data?data.list.reddemValue.yData:[]} title="REDEEM rETH VALUE IN STAFI PER WEEK" barColor={BarColor.right}/>
+            {/* <ChartCol data={data?data.list.erc20Mint.data:[]} xData={data?data.list.erc20Mint.yData:[]} title="MINTED rETH (ERC20)" barColor={BarColor.right}/> */}
+            <ChartCol data={data?data.list.stakeValue.data:[]} xData={data?data.list.stakeValue.yData:[]} title="STAKED rETH VALUE IN STAFI PER WEEK" barColor={BarColor.right}/>
+            {/* <ChartCol data={data?data.list.reddemValue.data:[]} xData={data?data.list.reddemValue.yData:[]} title="REDEEM rETH VALUE IN STAFI PER WEEK" barColor={BarColor.right}/> */}
             <ChartCol data={data?data.list.rtokenValue.data:[]} xData={data?data.list.rtokenValue.yData:[]} title="rETH VALUE IN STAFI PER WEEK" barColor={BarColor.left}/>
             <ChartCol data={data?data.list.feesValue.data:[]} xData={data?data.list.feesValue.yData:[]} title="STAKED FEE GENERATED PER WEEK" barColor={BarColor.right}/>
             <ChartCol data={data?data.list.users.data:[]} xData={data?data.list.users.yData:[]} title="UNIQUE USERS PER WEEK" barColor={BarColor.left}/>
