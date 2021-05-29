@@ -21,7 +21,7 @@ export default function Index(props:any){
             free:state.dashboardModule.free,
         }
     })  
-    console.log(totalIssuance,free,"=======asdf")
+     
     return <div>
           <DataRow>
           <DataCol title={"STAKED FIS VALUE"} unit="$" amount={data?NumberUtil.handleFisAmountToFixed(data.info.nativePrice*ratio*totalIssuance):"--"} toolTip={"test"}/>

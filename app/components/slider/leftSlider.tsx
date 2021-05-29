@@ -11,12 +11,13 @@ import selected_dot_svg from '@images/selected_dot.svg'
 import selected_ksm_svg from '@images/selected_ksm.svg'
 import selected_atom_svg from '@images/selected_atom.svg'
 import selected_eth_svg from '@images/selected_eth.svg'
+import selected_home_svg from '@images/selected_home.png'
 import './leftSlider.scss'
 const dataList=[
     {
         title:"home",
         icon:home_svg,
-        selected_icon:home_svg,
+        selected_icon:selected_home_svg,
         url:"/home/dashboard",
         keyWord:"home"
     },{

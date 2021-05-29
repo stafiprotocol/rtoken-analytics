@@ -79,7 +79,7 @@ export const getFree=(type:rSymbol):AppThunk=>async (dispatch,getState)=>{
         const protocolFeeAccount = await stafiApi.query.rTokenLedger.receiver();  
         const accountData = await stafiApi.query.rBalances.account(type, protocolFeeAccount.toJSON());
         const account=accountData.toJSON();  
-        console.log(NumberUtil.tokenAmountToHuman(account.free,type),"====NumberUtil.tokenAmountToHuman(account.free,type)")
+        
         dispatch(setFree(NumberUtil.tokenAmountToHuman(account.free,type) || "--"));
     } catch (error) {
         dispatch(setFree("--"));
@@ -92,7 +92,7 @@ export const getFree=(type:rSymbol):AppThunk=>async (dispatch,getState)=>{
     const  result =await stafiApi.query.rBalances.totalIssuance(type) 
     let totalIssuance:any = NumberUtil.tokenAmountToHuman(result.toJSON(),type);
     totalIssuance = NumberUtil.handleFisAmountToFixed(totalIssuance); 
-    console.log("totalIssuance:",totalIssuance);
+    
     dispatch(setTotalIssuance(totalIssuance))
 }
 
