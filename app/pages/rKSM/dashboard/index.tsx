@@ -24,7 +24,7 @@ export default function Index(props:any){
     return <div>
           <DataRow>
           <DataCol title={"STAKED rKSM VALUE"} unit="$" amount={NumberUtil.handleFisAmountToFixed(ratio*totalIssuance)} toolTip={"test"}/>
-            <DataCol title={"rKSM VALUE"} unit="$" amount={data?data.info.rtokenValue:"--"} toolTip={"test"}/>
+            <DataCol title={"rKSM VALUE"} unit="$" amount={data?NumberUtil.handleFisAmountToFixed(data.info.rtokenPrice*totalIssuance):"--"} toolTip={"test"}/>
             <DataCol title={"rKSM VALUE (ERC20)"} unit="$" amount={data?data.info.erc20RtokenValue:"--"} toolTip={"test"}/>
             <DataCol title={"TOTAL FEE"} unit="$"  amount={data?NumberUtil.handleFisAmountToFixed(data.info.rtokenPrice*free):"--"} toolTip={"test"}/>
             <DataCol title={"rKSM/KSM"} amount={NumberUtil.handleFisAmountRateToFixed(ratio)} toolTip={"test"}/>
