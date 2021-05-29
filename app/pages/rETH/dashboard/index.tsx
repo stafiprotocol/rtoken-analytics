@@ -26,7 +26,7 @@ export default function Index(props:any){
     })  
     return <div>
           <DataRow>
-          <DataCol title={"STAKED ETH VALUE"} unit="$" amount={data?NumberUtil.handleFisAmountToFixed(data.info.rtokenPrice*totalStakedAmount):"--"}   toolTip={"test"}/>
+          <DataCol title={"STAKED ETH VALUE"} unit="$" amount={data?NumberUtil.handleFisAmountToFixed(data.info.nativePrice*totalStakedAmount):"--"}   toolTip={"test"}/>
             <DataCol title={"rETH VALUE"} unit="$" amount={data?NumberUtil.handleFisAmountToFixed(data.info.rtokenPrice*erc20Amount):"--"} toolTip={"test"}/>
             
             <DataCol title={"TOTAL FEE"} unit="$"  amount={data?data.info.feesValue:"--"} toolTip={"test"}/>

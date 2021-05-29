@@ -24,7 +24,7 @@ export default function Index(props:any){
     console.log(totalIssuance,free,"=======asdf")
     return <div>
           <DataRow>
-          <DataCol title={"STAKED FIS VALUE"} unit="$" amount={NumberUtil.handleFisAmountToFixed(ratio*totalIssuance)} toolTip={"test"}/>
+          <DataCol title={"STAKED FIS VALUE"} unit="$" amount={data?NumberUtil.handleFisAmountToFixed(data.info.nativePrice*ratio*totalIssuance):"--"} toolTip={"test"}/>
             <DataCol title={"rFIS VALUE"} unit="$" amount={data?NumberUtil.handleFisAmountToFixed(data.info.rtokenPrice*totalIssuance):"--"} toolTip={"test"}/>
             <DataCol title={"rFIS VALUE (ERC20)"} unit="$" amount={data?NumberUtil.handleFisAmountToFixed((data.info.rtokenPrice*erc20Amount)):"--"}  toolTip={"test"}/>
             <DataCol title={"TOTAL FEE"} unit="$"  amount={data?NumberUtil.handleFisAmountToFixed(data.info.rtokenPrice*free):"--"} toolTip={"test"}/>
