@@ -23,7 +23,7 @@ export default function Index(props:any){
     })  
     return <div>
           <DataRow>
-          <DataCol title={"STAKED rKSM VALUE"} unit="$" amount={NumberUtil.handleFisAmountToFixed(ratio*totalIssuance)} toolTip={"test"}/>
+          <DataCol title={"STAKED KSM VALUE"} unit="$" amount={NumberUtil.handleFisAmountToFixed(ratio*totalIssuance)} toolTip={"test"}/>
             <DataCol title={"rKSM VALUE"} unit="$" amount={data?NumberUtil.handleFisAmountToFixed(data.info.rtokenPrice*totalIssuance):"--"} toolTip={"test"}/>
             <DataCol title={"rKSM VALUE (ERC20)"} unit="$" amount={data?data.info.erc20RtokenValue:"--"} toolTip={"test"}/>
             <DataCol title={"TOTAL FEE"} unit="$"  amount={data?NumberUtil.handleFisAmountToFixed(data.info.rtokenPrice*free):"--"} toolTip={"test"}/>
@@ -41,8 +41,8 @@ export default function Index(props:any){
             <ChartCol data={data?data.list.price.data:[]} xData={data?data.list.price.yData:[]} title="rKSM PRICE" barColor={BarColor.right}/>
             <ChartCol data={data?data.list.mint.data:[]} xData={data?data.list.mint.yData:[]} title="MINTED rKSM (NATIVE)" barColor={BarColor.left}/>
             <ChartCol data={data?data.list.erc20Mint.data:[]} xData={data?data.list.erc20Mint.yData:[]} title="MINTED rKSM (ERC20)" barColor={BarColor.right}/>
-            <ChartCol data={data?data.list.stakeValue.data:[]} xData={data?data.list.stakeValue.yData:[]} title="STAKED rKSM VALUE IN STAFI PER WEEK" barColor={BarColor.left}/>
-            <ChartCol data={data?data.list.reddemValue.data:[]} xData={data?data.list.reddemValue.yData:[]} title="REDEEM rKSM VALUE IN STAFI PER WEEK" barColor={BarColor.right}/>
+            <ChartCol data={data?data.list.stakeValue.data:[]} xData={data?data.list.stakeValue.yData:[]} title="STAKED KSM VALUE IN STAFI PER WEEK" barColor={BarColor.left}/>
+            <ChartCol data={data?data.list.reddemValue.data:[]} xData={data?data.list.reddemValue.yData:[]} title="REDEEM KSM VALUE IN STAFI PER WEEK" barColor={BarColor.right}/>
             <ChartCol data={data?data.list.rtokenValue.data:[]} xData={data?data.list.rtokenValue.yData:[]} title="rKSM VALUE IN STAFI PER WEEK" barColor={BarColor.left}/>
             <ChartCol data={data?data.list.feesValue.data:[]} xData={data?data.list.feesValue.yData:[]} title="STAKED FEE GENERATED PER WEEK" barColor={BarColor.right}/>
             <ChartCol data={data?data.list.users.data:[]} xData={data?data.list.users.yData:[]} title="UNIQUE USERS PER WEEK" barColor={BarColor.left}/>
