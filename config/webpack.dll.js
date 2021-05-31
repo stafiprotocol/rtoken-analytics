@@ -12,13 +12,8 @@ const vendors = [
   '@ant-design/icons',
   'lodash',
   'moment',
-  '@polkadot/api',
-  '@polkadot/extension-dapp',
-  '@polkadot/keyring',
-  'web3',
-  'web3-utils',
-  '@cosmjs/stargate',
-  '@cosmjs/proto-signing'
+  '@polkadot/api',  
+  'web3', 
 ];
 
 module.exports = {

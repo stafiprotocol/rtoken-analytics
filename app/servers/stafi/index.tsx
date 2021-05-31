@@ -1,7 +1,4 @@
-import {
-  web3Accounts,
-  web3Enable
-} from '@polkadot/extension-dapp';
+ 
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import config from '@config/index';
 import { KeypairType } from '@polkadot/util-crypto/types';

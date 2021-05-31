@@ -1,21 +1,9 @@
-import {
-  web3Accounts,
-  web3Enable
-} from '@polkadot/extension-dapp';
-import { ApiPromise, WsProvider } from '@polkadot/api';
-import config from '@config/index';
-import Stafi from '../stafi'
-
-import { KeypairType } from '@polkadot/util-crypto/types';
-import { SubstrateKeyring } from '@keyring/SubstrateKeyring';
+ 
+ 
+import config from '@config/index'; 
 
 let polkadotApi:any = null
-export default class ExtensionDapp extends SubstrateKeyring{
-  constructor(keypairType: KeypairType = 'sr25519') {
-    super(keypairType);
-    this._ss58_format = 0;
-    this._symbol = 'dot';
-  }
+export default class ExtensionDapp { 
    
   getRDOTTokenAddress() {
     return config.rDOTTokenAddress();

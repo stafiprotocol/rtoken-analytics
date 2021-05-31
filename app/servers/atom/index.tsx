@@ -1,15 +1,6 @@
-import config,{isdev} from '@config/index'; 
-import {CosmosKeyring} from '@keyring/CosmosKeyring';
-import { SigningStargateClient } from '@cosmjs/stargate';
-import { message } from 'antd';
-declare const window: any;
-let cosmosApi:any = null; 
+import config from '@config/index';  
 
-export default class ExtensionDapp extends CosmosKeyring{
-  constructor() {
-    super(); 
-    this._symbol = 'atom';
-  } 
+export default class ExtensionDapp{ 
   getRATOMTokenAddress() {
     return config.rATOMTokenAddress();
   }
