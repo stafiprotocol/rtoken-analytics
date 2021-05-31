@@ -45,12 +45,14 @@ export const {
 
  
 export const getCollect=():AppThunk=>async (dispatch,getState)=>{  
+    dispatch(setCollect(null))
      const result=await dashboardServer.getCollect(Cycle.week); 
      if(result.status==="80000"){
         dispatch(setCollect(result.data))
      }
 }
-export const getRToken=(rtoken:Rtoken,cycle:Cycle):AppThunk=>async (dispatch,getState)=>{ 
+export const getRToken=(rtoken:Rtoken,cycle:Cycle):AppThunk=>async (dispatch,getState)=>{
+    dispatch(setRToken(null)) 
     const result=await dashboardServer.getRToken(rtoken,cycle); 
     if(result.status==="80000"){
        dispatch(setRToken(result.data))
