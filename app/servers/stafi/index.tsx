@@ -1,16 +1,10 @@
  
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import config from '@config/index';
-import { KeypairType } from '@polkadot/util-crypto/types';
-import { SubstrateKeyring } from '@keyring/SubstrateKeyring';
+import config from '@config/index'; 
 
 let stafiApi:any = null
-export default class Index extends SubstrateKeyring{
-  constructor(keypairType: KeypairType = 'sr25519') {
-    super(keypairType);
-    this._ss58_format = 20;
-    this._symbol = 'fis';
-  }
+export default class Index{
+ 
   getWeb3EnalbeName () {
     return 'stafi/rtoken';
   }
