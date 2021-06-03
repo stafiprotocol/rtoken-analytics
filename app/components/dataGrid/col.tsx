@@ -1,6 +1,7 @@
 import React from 'react';
 import {Col,Tooltip} from 'antd'
 import doubt from "@images/doubt.svg";
+import NumberUtil from '@util/numberUtil'
 import './col.scss';
 type Props={
     title:string,
@@ -20,7 +21,7 @@ export default function Index(props:Props){
                         </div>
                     </div>
                     <div className="amount_line">
-                        {props.unit}{props.amount}
+                        {props.unit}{(props.unit=="$")?NumberUtil.handleEthRoundToFixed(props.amount):props.amount}
                     </div>
             </div>
     </Col>
