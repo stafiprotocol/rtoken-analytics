@@ -4,7 +4,6 @@ import config from '@config/index';
 import {api} from '@util/http';
 
 declare const window: any;
-declare const ethereum: any;
 let web3Instance:any=null;
 export default class Index{
   getWeb3(){
@@ -12,14 +11,16 @@ export default class Index{
       return web3Instance;
     }
   
-    let provider;
-    if (window.ethereum) {
-      provider = window.ethereum;
-    } else if (window.web3) {
-      provider = window.web3.currentProvider;
-    } else {
-      return null;
-    }
+    // let provider;
+    // if (window.ethereum) {
+    //   provider = window.ethereum;
+    // } else if (window.web3) {
+    //   provider = window.web3.currentProvider;
+    // } else {
+    //   return new Web3.providers.WebsocketProvider("wss://eth-mainnet.ws.alchemyapi.io/v2/bkdml_X06uuwFV4-KONSO3NoPHkIIv8Z");
+    // }
+
+    let provider = new Web3.providers.WebsocketProvider("wss://eth-mainnet.ws.alchemyapi.io/v2/bkdml_X06uuwFV4-KONSO3NoPHkIIv8Z");
   
     web3Instance = new Web3(provider);
   
