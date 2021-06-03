@@ -3,11 +3,10 @@ import { createBrowserHistory, createHashHistory } from 'history';
 import axios from 'axios'; 
 import {message} from 'antd'; 
 import webConfig from '@config/index'  
-let loadingTimer = null;
-const clearLoading = () => {
-  clearTimeout(loadingTimer);
-  //Toast.hide();
-}; 
+// let loadingTimer = null;
+// const clearLoading = () => {
+//   clearTimeout(loadingTimer); 
+// }; 
 
 export const baseName = '/';
 export const history = createBrowserHistory({ baseName });
@@ -39,7 +38,7 @@ export const authorized = (allowed, currentRole) => includes(allowed, currentRol
 
 const axiosInstance = axios.create({
   baseURL: window.location.origin,
-  timeout: 500000,
+  timeout: 60000,
   // headers: {   },  
   //withCredentials: true,
   //responseType: 'json',
@@ -89,14 +88,13 @@ axiosInstance.interceptors.response.use(
     // let refreshToken = response.headers['X-ACCESS-TOKEN']; 
     // if (refreshToken) { 
     //   setSessionStorageItem('USER_TOKEN', refreshToken);
-    // }
- 
+    // } 
     if (response.data.code && response.data.code != "0") {
       message.error(response.data.message);
     }
     return response;
   },
-  function (error) {
+  function (error) { 
     return Promise.reject(error);
   }
 );
@@ -111,12 +109,12 @@ export const api = {
    */
   request: (argu) => {
 
-    clearLoading();
-    if (!argu.closeLoading) {
-      loadingTimer = setTimeout(() => {
-        //Toast.loading('加载中...', 0);
-      }, 200);
-    }
+    // clearLoading();
+    // if (!argu.closeLoading) {
+    //   loadingTimer = setTimeout(() => {
+    //     //Toast.loading('加载中...', 0);
+    //   }, 200);
+    // }
     let config = {};
     const { url, method, queryParams, data: res, ...rest } = argu;
     if (!argu.url) {
@@ -138,7 +136,7 @@ export const api = {
     return axiosInstance
       .request(config)
       .then((res) => {
-        clearLoading();
+        //clearLoading();
         if (config.isDownload) {
           try {
             const {
@@ -155,7 +153,7 @@ export const api = {
         return Promise.resolve(res.data);
       })
       .catch((err) => {
-        clearLoading();
+        // clearLoading();
         if (config.ignoreError) {
           // hotfix: no error message to pop up but should re-login if token is invalid
           const data = err && err.response && err.response.data;
@@ -167,7 +165,7 @@ export const api = {
           return Promise.reject(err);
         }
         if (err.response) {
-          const data = err.response.data;
+          const data = err.response.data; 
           if (data && data.code === 401) {
             sessionStorage.clear();
             console.error('TODO: catch error');
