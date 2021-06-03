@@ -10,7 +10,7 @@ export default function index(props:any){
   const dispatch=useDispatch();
   useEffect(()=>{
     dispatch(getAssetBalanceAll());
-  })
+  },[])
   const {loadding}=useSelector((state:RootState)=>{
     return {
       loadding:state.dashboardModule.loadding
