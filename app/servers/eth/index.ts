@@ -11,16 +11,16 @@ export default class Index{
       return web3Instance;
     }
   
-    // let provider;
-    // if (window.ethereum) {
-    //   provider = window.ethereum;
-    // } else if (window.web3) {
-    //   provider = window.web3.currentProvider;
-    // } else {
-    //   return new Web3.providers.WebsocketProvider("wss://eth-mainnet.ws.alchemyapi.io/v2/bkdml_X06uuwFV4-KONSO3NoPHkIIv8Z");
-    // }
+    let provider;
+    if (window.ethereum) {
+      provider = window.ethereum;
+    } else if (window.web3) {
+      provider = window.web3.currentProvider;
+    } else {
+      return new Web3.providers.WebsocketProvider("wss://eth-mainnet.ws.alchemyapi.io/v2/bkdml_X06uuwFV4-KONSO3NoPHkIIv8Z");
+    }
 
-    let provider = new Web3.providers.WebsocketProvider("wss://eth-mainnet.ws.alchemyapi.io/v2/bkdml_X06uuwFV4-KONSO3NoPHkIIv8Z");
+    // let provider = new Web3.providers.WebsocketProvider("wss://eth-mainnet.ws.alchemyapi.io/v2/bkdml_X06uuwFV4-KONSO3NoPHkIIv8Z");
   
     web3Instance = new Web3(provider);
   
