@@ -9,7 +9,7 @@ import {rSymbol} from '@keyring/defaults'
 export default function Index(props:any){
     const dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(getRToken(Rtoken.rAtom,Cycle.week));
+        dispatch(getRToken(Rtoken.rAtom));
         dispatch(initData(rSymbol.Atom))
     },[]); 
     const {data,erc20Amount,ratio,totalIssuance,free}=useSelector((state:any)=>{ 

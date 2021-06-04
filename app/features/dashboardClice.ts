@@ -56,7 +56,7 @@ export const getCollect=():AppThunk=>async (dispatch,getState)=>{
     try {
         
     
-        const result=await dashboardServer.getCollect(Cycle.week); 
+        const result=await dashboardServer.getCollect(Cycle.day); 
         if(result.status==="80000"){
             dispatch(setCollect(result.data))
         }
@@ -65,14 +65,13 @@ export const getCollect=():AppThunk=>async (dispatch,getState)=>{
         dispatch(setLoadding(false))
     }
 }
-export const getRToken=(rtoken:Rtoken,cycle:Cycle):AppThunk=>async (dispatch,getState)=>{
+export const getRToken=(rtoken:Rtoken):AppThunk=>async (dispatch,getState)=>{
     dispatch(setRToken(null)) 
     dispatch(setLoadding(true))
-    try {
-        
-        const result=await dashboardServer.getRToken(rtoken,cycle); 
+    try { 
+        const result=await dashboardServer.getRToken(rtoken,Cycle.day); 
         if(result.status==="80000"){
-        dispatch(setRToken(result.data))
+            dispatch(setRToken(result.data))
         }
         dispatch(setLoadding(false)) 
     } catch (error) {

@@ -10,7 +10,7 @@ import {rSymbol} from '@keyring/defaults'
 export default function Index(props:any){
     const dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(getRToken(Rtoken.rEth,Cycle.week));
+        dispatch(getRToken(Rtoken.rEth));
         dispatch(rTokenRate());
         dispatch(getStakingPoolStatus());
         // dispatch(getFree(rSymbol.Eth))
