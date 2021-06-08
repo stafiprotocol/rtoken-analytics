@@ -27,12 +27,12 @@ export default function Index(props:any){
             <DataCol title={"REDEEM VALUE "} unit="$" amount={data?data.info.reddemValue:"--"} toolTip={"test"}/>
         </DataRow>
         <DataRow>
-            <ChartCol data={data?data.list.stakeValue.data:[]} xData={data?data.list.stakeValue.yData:[]} title="STAKED VALUE IN STAFI PER WEEK" barColor={BarColor.left}/>
-            <ChartCol data={data?data.list.reddemValue.data:[]} xData={data?data.list.reddemValue.yData:[]} title="REDEEM VALUE IN STAFI PER WEEK" barColor={BarColor.right}/>
-            <ChartCol data={data?data.list.rtokenValue.data:[]} xData={data?data.list.rtokenValue.yData:[]} title="rTOKEN VALUE IN STAFI PER WEEK" barColor={BarColor.left}/>
-            <ChartCol data={data?data.list.feesValue.data:[]} xData={data?data.list.feesValue.yData:[]} title="STAKED FEE GENERATED PER WEEK" barColor={BarColor.right}/>
-            <ChartCol data={data?data.list.users.data:[]} xData={data?data.list.users.yData:[]} title="UNIQUE USERS PER WEEK" barColor={BarColor.left}/>
-            <ChartCol data={data?data.list.stakeTxs.data:[]} xData={data?data.list.stakeTxs.yData:[]} title="STAKED TRANSACTION IN STAFI PER WEEK" barColor={BarColor.right}/>
+            <ChartCol data={data?data.list.stakeValue.data:[]} xData={data?data.list.stakeValue.yData:[]} title="STAKED VALUE" barColor={BarColor.left}/>
+            <ChartCol data={data?data.list.reddemValue.data:[]} xData={data?data.list.reddemValue.yData:[]} title="REDEEM VALUE" barColor={BarColor.right}/>
+            <ChartCol data={data?data.list.rtokenValue.data:[]} xData={data?data.list.rtokenValue.yData:[]} title="rTOKEN VALUE" barColor={BarColor.left}/>
+            <ChartCol data={data?data.list.feesValue.data:[]} xData={data?data.list.feesValue.yData:[]} title="STAKED FEE GENERATED" barColor={BarColor.right}/>
+            <ChartCol data={data?data.list.users.data:[]} xData={data?data.list.users.yData:[]} title="UNIQUE USERS" barColor={BarColor.left}/>
+            <ChartCol data={data?data.list.stakeTxs.data:[]} xData={data?data.list.stakeTxs.yData:[]} title="STAKED TRANSACTION" barColor={BarColor.right}/>
         </DataRow>
     </div>
 }

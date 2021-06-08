@@ -42,12 +42,12 @@ export default function Index(props:any){
             <ChartCol data={data?data.list.price.data:[]} xData={data?data.list.price.yData:[]} title="rFIS PRICE" barColor={BarColor.right}/>
             <ChartCol data={data?data.list.mint.data:[]} xData={data?data.list.mint.yData:[]} title="MINTED rFIS (NATIVE)" barColor={BarColor.left}/>
             <ChartCol data={data?data.list.erc20Mint.data:[]} xData={data?data.list.erc20Mint.yData:[]} title="MINTED rFIS (ERC20)" barColor={BarColor.right}/>
-            <ChartCol data={data?data.list.stakeValue.data:[]} xData={data?data.list.stakeValue.yData:[]} title="STAKED FIS VALUE IN STAFI PER WEEK" barColor={BarColor.left}/>
-            <ChartCol data={data?data.list.reddemValue.data:[]} xData={data?data.list.reddemValue.yData:[]} title="REDEEM FIS VALUE IN STAFI PER WEEK" barColor={BarColor.right}/>
-            <ChartCol data={data?data.list.rtokenValue.data:[]} xData={data?data.list.rtokenValue.yData:[]} title="rFIS VALUE IN STAFI PER WEEK" barColor={BarColor.left}/>
-            <ChartCol data={data?data.list.feesValue.data:[]} xData={data?data.list.feesValue.yData:[]} title="STAKED FEE GENERATED PER WEEK" barColor={BarColor.right}/>
-            <ChartCol data={data?data.list.users.data:[]} xData={data?data.list.users.yData:[]} title="UNIQUE USERS PER WEEK" barColor={BarColor.left}/>
-            <ChartCol data={data?data.list.stakeTxs.data:[]} xData={data?data.list.stakeTxs.yData:[]} title="STAKED TRANSACTION IN STAFI PER WEEK" barColor={BarColor.right}/>
+            <ChartCol data={data?data.list.stakeValue.data:[]} xData={data?data.list.stakeValue.yData:[]} title="STAKED FIS VALUE" barColor={BarColor.left}/>
+            <ChartCol data={data?data.list.reddemValue.data:[]} xData={data?data.list.reddemValue.yData:[]} title="REDEEM FIS VALUE" barColor={BarColor.right}/>
+            <ChartCol data={data?data.list.rtokenValue.data:[]} xData={data?data.list.rtokenValue.yData:[]} title="rFIS VALUE" barColor={BarColor.left}/>
+            <ChartCol data={data?data.list.feesValue.data:[]} xData={data?data.list.feesValue.yData:[]} title="STAKED FEE GENERATED" barColor={BarColor.right}/>
+            <ChartCol data={data?data.list.users.data:[]} xData={data?data.list.users.yData:[]} title="UNIQUE USERS" barColor={BarColor.left}/>
+            <ChartCol data={data?data.list.stakeTxs.data:[]} xData={data?data.list.stakeTxs.yData:[]} title="STAKED TRANSACTION" barColor={BarColor.right}/>
              
         </DataRow>
     </div>
