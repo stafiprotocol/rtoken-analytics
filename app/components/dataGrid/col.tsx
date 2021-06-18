@@ -21,7 +21,7 @@ export default function Index(props:Props){
                         </div>
                     </div>
                     <div className="amount_line">
-                        {props.unit}{(props.unit=="$")?NumberUtil.amount_format(NumberUtil.handleEthRoundToFixed(props.amount)):props.amount}
+                        {props.unit}{(props.unit=="$")?NumberUtil.amount_format(NumberUtil.handleEthRoundToFixed(props.amount)):NumberUtil.amount_format(props.amount,6)}
                     </div>
             </div>
     </Col>

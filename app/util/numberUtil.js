@@ -187,12 +187,12 @@ export default {
   },
   rTokenRateToHuman(amount) {
     return amount / 1000000000000;
-  },
-  amount_format(amount){
+  }, 
+  amount_format(amount,decimals){
     if(amount=="--"){
       return "--"
     }
-    return this.number_format(amount,2,".",",")
+    return this.number_format(amount,decimals || 2,".",",")
   },
   number_format(number, decimals, dec_point, thousands_sep) {
       /*
@@ -213,13 +213,15 @@ export default {
               return '' + Math.ceil(n * k) / k;
           };
   
+     
+    
       s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
       var re = /(-?\d+)(\d{3})/;
       while (re.test(s[0])) {
           s[0] = s[0].replace(re, "$1" + sep + "$2");
       }
-  
-      if ((s[1] || '').length < prec) {
+      
+      if ((s[1] || '').length < prec && number.indexOf(".")>-1) {
           s[1] = s[1] || '';
           s[1] += new Array(prec - s[1].length + 1).join('0');
       }
