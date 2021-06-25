@@ -35,7 +35,7 @@ export default function Index(props:Props){
                     axisTick: {
                         alignWithLabel: true
                     },
-                    axisLabel: { interval: 0, rotate: -30,color:"#A5A5A5" }, 
+                    axisLabel: { interval: 0, rotate: -40,color:"#A5A5A5" }, 
                 }
             ],
             grid: {
