@@ -50,6 +50,13 @@ export default {
       return '0xd363ed9ee73c8b6bd048ae188000be454f7b7925';
     }  
   },
+  rMATICTokenAddress:()=>{
+    if(!isdev()){
+      return '0x3dbb00c9be5a327e25caf4f650844c5dba81e34b';
+    }else{
+      return '0x1a80c8874e4bf1516c02aa92b838b33e11cde7e8';
+    }  
+  },
   rETHTokenAddress: ()=>{ 
     if(!isdev()){
       return '0x9559aaa82d9649c7a7b220e7c461d2e74c9a3593';

@@ -1,6 +1,6 @@
  
+import config from '@config/index';
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import config from '@config/index'; 
 
 let stafiApi:any = null
 export default class Index{
@@ -15,42 +15,37 @@ export default class Index{
 
   createStafiApi() {
     const types = {
+      Address: 'IndicesLookupSource',
+      LookupSource: 'IndicesLookupSource',
       RefCount: 'u32',
       ChainId: 'u8',
       ResourceId: '[u8; 32]',
       DepositNonce: 'u64',
       RateType: 'u64',
+      AccountInfo: {
+        nonce: 'u32',
+        refcount: 'RefCount',
+        data: 'AccountData',
+      },
       AccountRData: {
-        free: 'u128'
+        free: 'u128',
       },
       RSymbol: {
-        _enum: [
-          'RFIS',
-          'RDOT',
-          'RKSM',
-          'RATOM'
-        ]
+        _enum: ['RFIS', 'RDOT', 'RKSM', 'RATOM', 'RSOL', 'RMATIC', 'RBNB'],
       },
       AccountXData: {
-        free: 'u128'
+        free: 'u128',
       },
       XSymbol: {
-        _enum: [
-          'WRA',
-        ]
+        _enum: ['WRA'],
       },
       ProposalStatus: {
-        _enum: [
-          'Active',
-          'Passed',
-          'Expired',
-          'Executed'
-        ]
+        _enum: ['Active', 'Passed', 'Expired', 'Executed'],
       },
       ProposalVotes: {
         voted: 'Vec<AccountId>',
         status: 'ProposalStatus',
-        expiry: 'BlockNumber'
+        expiry: 'BlockNumber',
       },
       BondRecord: {
         bonder: 'AccountId',
@@ -59,31 +54,16 @@ export default class Index{
         pool: 'Vec<u8>',
         blockhash: 'Vec<u8>',
         txhash: 'Vec<u8>',
-        amount: 'u128'
+        amount: 'u128',
       },
       BondReason: {
-        _enum: [
-          'Pass',
-          'BlockhashUnmatch',
-          'TxhashUnmatch',
-          'PubkeyUnmatch',
-          'PoolUnmatch',
-          'AmountUnmatch'
-        ]
+        _enum: ['Pass', 'BlockhashUnmatch', 'TxhashUnmatch', 'PubkeyUnmatch', 'PoolUnmatch', 'AmountUnmatch'],
       },
       BondState: {
-        _enum: [
-          'Dealing',
-          'Fail',
-          'Success'
-        ]
+        _enum: ['Dealing', 'Fail', 'Success'],
       },
       SigVerifyResult: {
-        _enum: [
-          'InvalidPubkey',
-          'Fail',
-          'Pass'
-        ]
+        _enum: ['InvalidPubkey', 'Fail', 'Pass'],
       },
       PoolBondState: {
         _enum: [
@@ -92,8 +72,8 @@ export default class Index{
           'ActiveReported',
           'WithdrawSkipped',
           'WithdrawReported',
-          'TransferReported'
-        ]
+          'TransferReported',
+        ],
       },
       BondSnapshot: {
         symbol: 'RSymbol',
@@ -103,47 +83,69 @@ export default class Index{
         unbond: 'u128',
         active: 'u128',
         last_voter: 'AccountId',
-        bond_state: 'PoolBondState'
+        bond_state: 'PoolBondState',
       },
       LinkChunk: {
         bond: 'u128',
         unbond: 'u128',
-        active: 'u128'
+        active: 'u128',
       },
       OriginalTxType: {
-        _enum: [
-          'Transfer',
-          'Bond',
-          'Unbond',
-          'WithdrawUnbond',
-          'ClaimRewards'
-        ]
+        _enum: ['Transfer', 'Bond', 'Unbond', 'WithdrawUnbond', 'ClaimRewards'],
       },
       Unbonding: {
         who: 'AccountId',
         value: 'u128',
-        recipient: 'Vec<u8>'
+        recipient: 'Vec<u8>',
       },
       UserUnlockChunk: {
         pool: 'Vec<u8>',
         unlock_era: 'u32',
         value: 'u128',
-        recipient: 'Vec<u8>'
+        recipient: 'Vec<u8>',
       },
       RproposalStatus: {
-        _enum: [
-          'Initiated',
-          'Approved',
-          'Rejected',
-          'Expired'
-        ]
+        _enum: ['Initiated', 'Approved', 'Rejected', 'Expired'],
       },
       RproposalVotes: {
         votes_for: 'Vec<AccountId>',
         votes_against: 'Vec<AccountId>',
         status: 'RproposalStatus',
-        expiry: 'BlockNumber'
-      }
+        expiry: 'BlockNumber',
+      },
+      SwapTransactionInfo: {
+        account: 'AccountId',
+        receiver: 'Vec<u8>',
+        value: 'u128',
+        is_deal: 'bool',
+      },
+      SwapRate: {
+        lock_number: 'u64',
+        rate: 'u128',
+      },
+      ClaimInfo: {
+        mint_amount: 'u128',
+        native_token_amount: 'u128',
+        total_reward: 'Balance',
+        total_claimed: 'Balance',
+        latest_claimed_block: 'BlockNumber',
+        mint_block: 'BlockNumber',
+      },
+      MintRewardAct: {
+        begin: 'BlockNumber',
+        end: 'BlockNumber',
+        cycle: 'u32',
+        reward_rate: 'u128',
+        total_reward: 'Balance',
+        left_amount: 'Balance',
+        user_limit: 'Balance',
+        locked_blocks: 'u32',
+        total_rtoken_amount: 'u128',
+        total_native_token_amount: 'u128',
+      },
+      BondAction: {
+        _enum: ['BondOnly', 'UnbondOnly', 'BothBondUnbond', 'EitherBondUnbond'],
+      },
     };
     if (stafiApi) {
         return stafiApi;

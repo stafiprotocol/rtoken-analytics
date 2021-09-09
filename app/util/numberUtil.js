@@ -1,15 +1,15 @@
-import {rSymbol} from '@keyring/defaults'
+import { rSymbol } from "@keyring/defaults";
 export default {
   // Add floating point numbers
-  floatAdd: function(arg1, arg2) {
+  floatAdd: function (arg1, arg2) {
     var r1, r2, m;
     try {
-      r1 = arg1.toString().split('.')[1].length;
+      r1 = arg1.toString().split(".")[1].length;
     } catch (e) {
       r1 = 0;
     }
     try {
-      r2 = arg2.toString().split('.')[1].length;
+      r2 = arg2.toString().split(".")[1].length;
     } catch (e) {
       r2 = 0;
     }
@@ -18,56 +18,55 @@ export default {
   },
 
   // Subtraction of floating point numbers
-  floatSub: function(arg1, arg2) {
+  floatSub: function (arg1, arg2) {
     var r1, r2, m, n;
     try {
-      r1 = arg1.toString().split('.')[1].length;
+      r1 = arg1.toString().split(".")[1].length;
     } catch (e) {
       r1 = 0;
     }
     try {
-      r2 = arg2.toString().split('.')[1].length;
+      r2 = arg2.toString().split(".")[1].length;
     } catch (e) {
       r2 = 0;
     }
     m = Math.pow(10, Math.max(r1, r2));
-    
+
     n = r1 >= r2 ? r1 : r2;
     return ((Math.round(arg1 * m) - Math.round(arg2 * m)) / m).toFixed(n);
   },
 
- 
-  floatMul: function(arg1, arg2) {
+  floatMul: function (arg1, arg2) {
     var m = 0,
       s1 = arg1.toString(),
       s2 = arg2.toString();
     try {
-      m += s1.split('.')[1].length;
+      m += s1.split(".")[1].length;
     } catch (e) {}
     try {
-      m += s2.split('.')[1].length;
+      m += s2.split(".")[1].length;
     } catch (e) {}
     return (
-      (Number(s1.replace('.', '')) * Number(s2.replace('.', ''))) /
+      (Number(s1.replace(".", "")) * Number(s2.replace(".", ""))) /
       Math.pow(10, m)
     );
   },
 
   // Division of floating point numbers
-  floatDiv: function(arg1, arg2) {
+  floatDiv: function (arg1, arg2) {
     var t1 = 0,
       t2 = 0,
       r1,
       r2;
     try {
-      t1 = arg1.toString().split('.')[1].length;
+      t1 = arg1.toString().split(".")[1].length;
     } catch (e) {}
     try {
-      t2 = arg2.toString().split('.')[1].length;
+      t2 = arg2.toString().split(".")[1].length;
     } catch (e) {}
 
-    r1 = Number(arg1.toString().replace('.', ''));
-    r2 = Number(arg2.toString().replace('.', ''));
+    r1 = Number(arg1.toString().replace(".", ""));
+    r2 = Number(arg2.toString().replace(".", ""));
     return (r1 / r2) * pow(10, t2 - t1);
   },
 
@@ -93,8 +92,8 @@ export default {
 
   // The return string contains 6 decimal places and 2 decimal places, including 0
   handleEthRoundToFixed(amount) {
-    if(amount=="--" || isNaN(amount)){
-      return "--"
+    if (amount == "--" || isNaN(amount)) {
+      return "--";
     }
     return (Math.floor(amount * 100) / 100).toFixed(2);
   },
@@ -110,25 +109,25 @@ export default {
   },
 
   // The return string contains 6 decimal places, including 0
-  handleFisAmountToFixed(amount) { 
-    if(amount=="--" || isNaN(amount)){
-      return "--"
+  handleFisAmountToFixed(amount) {
+    if (amount == "--" || isNaN(amount)) {
+      return "--";
     }
     return (Math.floor(amount * 1000000) / 1000000).toFixed(6) || "--";
   },
 
   // The return string contains 6 decimal places, including 0
-  handleFisRoundToFixed(amount) { 
-    if(amount=="--"){
-      return "--"
+  handleFisRoundToFixed(amount) {
+    if (amount == "--") {
+      return "--";
     }
     return (Math.round(amount * 100000000) / 100000000).toFixed(6) || "--";
   },
 
   // Returns a string containing 6 decimal places, including 0
   handleFisAmountRateToFixed(amount) {
-    if(amount=="--"){
-      return "--"
+    if (amount == "--") {
+      return "--";
     }
     return this.handleEthAmountRound(amount).toFixed(6);
   },
@@ -142,29 +141,31 @@ export default {
   },
 
   // The return string contains 4 decimal places, including 0
-  handleAtomRoundToFixed(amount) { 
-    if(amount=="--"){
-      return "--"
+  handleAtomRoundToFixed(amount) {
+    if (amount == "--") {
+      return "--";
     }
     return (Math.round(amount * 1000000) / 1000000).toFixed(4) || "--";
   },
 
-  tokenAmountToHuman(amount,symbol){
-   switch(symbol){
-     case rSymbol.Dot:
-      return amount / 10000000000;
-    case rSymbol.Atom:
-      return amount / 1000000;
-     case rSymbol.Fis:
+  tokenAmountToHuman(amount, symbol) {
+    switch (symbol) {
+      case rSymbol.Dot:
+        return amount / 10000000000;
+      case rSymbol.Atom:
+        return amount / 1000000;
+      case rSymbol.Fis:
         return amount / 1000000000000;
-     case rSymbol.Ksm:
+      case rSymbol.Ksm:
         return amount / 1000000000000;
-     default:
+      case rSymbol.Matic:
+        return Number(amount) / Number(1000000000000000000n);
+      default:
         return amount / 1000000000000;
-   } 
+    }
   },
-  tokenAmountToChain(amount,symbol) {
-    switch(symbol){
+  tokenAmountToChain(amount, symbol) {
+    switch (symbol) {
       case rSymbol.Dot:
         return Math.round(Number(amount) * 10000000000);
       case rSymbol.Atom:
@@ -175,7 +176,7 @@ export default {
         return Math.round(Number(amount) * 1000000000000);
       default:
         return Math.round(Number(amount) * 1000000000000);
-    }  
+    }
   },
   fisFeeToHuman(fee) {
     return fee / 1000000000;
@@ -187,46 +188,42 @@ export default {
   },
   rTokenRateToHuman(amount) {
     return amount / 1000000000000;
-  }, 
-  amount_format(amount,decimals){
-    if(amount=="--"){
-      return "--"
+  },
+  amount_format(amount, decimals) {
+    if (amount == "--") {
+      return "--";
     }
-    return this.number_format(amount,decimals || 2,".",",")
+    return this.number_format(amount, decimals || 2, ".", ",");
   },
   number_format(number, decimals, dec_point, thousands_sep) {
-      /*
-      * Parameter Description:
-      * number：Number to format
-      * decimals：Keep a few decimal places
-      * dec_point：decimal symbol
-      * thousands_sep：Thousandth symbol
-      * */
-      number = (number + '').replace(/[^0-9+-Ee.]/g, '');
-      var n = !isFinite(+number) ? 0 : +number,
-          prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-          sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-          dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-          s = '',
-          toFixedFix = function (n, prec) {
-              var k = Math.pow(10, prec);
-              return '' + Math.ceil(n * k) / k;
-          };
-  
-     
-    
-      s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-      var re = /(-?\d+)(\d{3})/;
-      while (re.test(s[0])) {
-          s[0] = s[0].replace(re, "$1" + sep + "$2");
-      }
-      
-      if ((s[1] || '').length < prec && number.indexOf(".")>-1) {
-          s[1] = s[1] || '';
-          s[1] += new Array(prec - s[1].length + 1).join('0');
-      }
-      return s.join(dec);
-  }
-}; 
+    /*
+     * Parameter Description:
+     * number：Number to format
+     * decimals：Keep a few decimal places
+     * dec_point：decimal symbol
+     * thousands_sep：Thousandth symbol
+     * */
+    number = (number + "").replace(/[^0-9+-Ee.]/g, "");
+    var n = !isFinite(+number) ? 0 : +number,
+      prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+      sep = typeof thousands_sep === "undefined" ? "," : thousands_sep,
+      dec = typeof dec_point === "undefined" ? "." : dec_point,
+      s = "",
+      toFixedFix = function (n, prec) {
+        var k = Math.pow(10, prec);
+        return "" + Math.ceil(n * k) / k;
+      };
 
- 
+    s = (prec ? toFixedFix(n, prec) : "" + Math.round(n)).split(".");
+    var re = /(-?\d+)(\d{3})/;
+    while (re.test(s[0])) {
+      s[0] = s[0].replace(re, "$1" + sep + "$2");
+    }
+
+    if ((s[1] || "").length < prec && number.indexOf(".") > -1) {
+      s[1] = s[1] || "";
+      s[1] += new Array(prec - s[1].length + 1).join("0");
+    }
+    return s.join(dec);
+  },
+};

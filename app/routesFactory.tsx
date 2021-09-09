@@ -1,27 +1,28 @@
 import React from 'react';
 import { renderRoutes } from 'react-router-config';
-import { Switch, BrowserRouter, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import HomeDashboard from './pages/home/dashboard';
+import HomeTemplate from './pages/home/template';
+import AtomDashboard from './pages/rATOM/dashboard';
+import AtomTemplate from './pages/rATOM/template';
+import DotDashboard from './pages/rDOT/dashboard';
+import DotTemplate from './pages/rDOT/template';
+import EthDashboard from './pages/rETH/dashboard';
+import EthTemplate from './pages/rETH/template';
+import FisDashboard from './pages/rFIS/dashboard';
+import FisTemplate from './pages/rFIS/template';
+import KsmDashboard from './pages/rKSM/dashboard';
+import KsmTemplate from './pages/rKSM/template';
+import MaticDashboard from './pages/rMATIC/dashboard';
+import MaticTemplate from './pages/rMATIC/template';
 // import authorizedRoute from '@components/route/authorizedRoute';
- 
-
 import RootTemplate from './pages/template/rootTemplate';
-import HomeTemplate from  './pages/home/template';
-import HomeDashboard from  './pages/home/dashboard';
 
-import DotTemplate from  './pages/rDOT/template';
-import DotDashboard from  './pages/rDOT/dashboard';
 
-import KsmTemplate from  './pages/rKSM/template';
-import KsmDashboard from  './pages/rKSM/dashboard';
 
-import AtomTemplate from  './pages/rATOM/template';
-import AtomDashboard from  './pages/rATOM/dashboard';
 
-import EthTemplate from  './pages/rETH/template';
-import EthDashboard from  './pages/rETH/dashboard';
 
-import FisTemplate from  './pages/rFIS/template';
-import FisDashboard from  './pages/rFIS/dashboard';
+
   
 const routesFactory=(role?:any)=>{ 
   const routes=[
@@ -111,6 +112,20 @@ const routesFactory=(role?:any)=>{
           },{
             path: '*',
             component: () => <Redirect to="/rfis/dashboard"/>
+          }
+        ]
+      },{
+        id:"rmatic",
+        path:'/rmatic', 
+        component:MaticTemplate, 
+        routes:[
+          {
+            id:"rmatic_dashboard",
+            path:"/rmatic/dashboard",
+            component:MaticDashboard, 
+          },{
+            path: '*',
+            component: () => <Redirect to="/rmatic/dashboard"/>
           }
         ]
       },{
