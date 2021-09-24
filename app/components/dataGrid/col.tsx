@@ -1,11 +1,10 @@
+import NumberUtil from '@util/numberUtil';
+import { Col } from 'antd';
 import React from 'react';
-import {Col,Tooltip} from 'antd'
-import doubt from "@images/doubt.svg";
-import NumberUtil from '@util/numberUtil'
 import './col.scss';
 type Props={
     title:string,
-    amount:string,
+    amount:string|number,
     toolTip?:string,
     unit?:string
 }

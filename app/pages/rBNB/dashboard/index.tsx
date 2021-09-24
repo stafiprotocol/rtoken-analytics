@@ -13,7 +13,7 @@ export default function Index(props: any) {
     dispatch(getRToken(Rtoken.rBnb));
     dispatch(initData(rSymbol.Bnb));
   }, []);
-  
+
   const { data, bep20Amount, ratio, totalIssuance, free } = useSelector(
     (state: any) => {
       return {
@@ -58,9 +58,7 @@ export default function Index(props: any) {
           unit="$"
           amount={
             data
-              ? NumberUtil.handleFisAmountToFixed(
-                  data.info.rtokenPrice * bep20Amount
-                )
+              ? NumberUtil.handleFisAmountToFixed(data.info.bep20RtokenValue)
               : "--"
           }
           toolTip={"test"}
@@ -93,7 +91,7 @@ export default function Index(props: any) {
         />
         <DataCol
           title={"rBNB AMOUNT (BEP20)"}
-          amount={bep20Amount}
+          amount={data ? data.info.bep20RtokenAmount : "--"}
           toolTip={"test"}
         />
         <DataCol

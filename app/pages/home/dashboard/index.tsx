@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'; 
-import DataRow from '@components/dataGrid/row';
+import ChartCol, { BarColor } from '@components/dataGrid/chartCol';
 import DataCol from '@components/dataGrid/col';
-import ChartCol,{BarColor} from '@components/dataGrid/chartCol';
-import { getCollect} from '@features/dashboardClice'
+import DataRow from '@components/dataGrid/row';
+import { getCollect } from '@features/dashboardClice';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 export default function Index(props:any){
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ export default function Index(props:any){
           <DataRow>
             <DataCol title={"STAKED VALUE"} unit="$" amount={data?data.info.stakeValue:"--"} toolTip={"test"}/>
             <DataCol title={"rTOKEN VALUE"} unit="$" amount={data?data.info.rtokenValue:"--"} toolTip={"test"}/>
-            <DataCol title={"rTOKEN VALUE (ERC20)"} unit="$" amount={data?data.info.erc20RtokenValue:"--"} toolTip={"test"}/>
+            <DataCol title={"rTOKEN VALUE (ERC20)"} unit="$" amount={data?Number(data.info.erc20RtokenValue)+Number(data.info.bep20RtokenValue):"--"} toolTip={"test"}/>
             <DataCol title={"TOTAL FEE"} unit="$" amount={data?data.info.feesValue:"--"} toolTip={"test"}/>
             <DataCol title={"ORIGINAL VALIDATORS"} amount={data?data.info.validators:"--"} toolTip={"test"}/>
             <DataCol title={"UNIQUE USERS"} amount={data?data.info.users:"--"} toolTip={"test"}/>
