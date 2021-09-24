@@ -160,6 +160,8 @@ export default {
         return amount / 1000000000000;
       case rSymbol.Matic:
         return Number(amount) / Number(1000000000000000000n);
+      case rSymbol.Bnb:
+        return Number(amount) / Number(100000000);
       default:
         return amount / 1000000000000;
     }
