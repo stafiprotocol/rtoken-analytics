@@ -136,8 +136,8 @@ export default function Index(props: any) {
           barColor={BarColor.left}
         />
         <ChartCol
-          data={data ? data.list.erc20Mint.data : []}
-          xData={data ? data.list.erc20Mint.yData : []}
+          data={data ? data.list.bep20Mint.data : []}
+          xData={data ? data.list.bep20Mint.yData : []}
           title="MINTED rBNB (BEP20)"
           barColor={BarColor.right}
         />
