@@ -5,6 +5,8 @@ import HomeDashboard from './pages/home/dashboard';
 import HomeTemplate from './pages/home/template';
 import AtomDashboard from './pages/rATOM/dashboard';
 import AtomTemplate from './pages/rATOM/template';
+import BnbDashboard from './pages/rBNB/dashboard';
+import BnbTemplate from './pages/rBNB/template';
 import DotDashboard from './pages/rDOT/dashboard';
 import DotTemplate from './pages/rDOT/template';
 import EthDashboard from './pages/rETH/dashboard';
@@ -126,6 +128,20 @@ const routesFactory=(role?:any)=>{
           },{
             path: '*',
             component: () => <Redirect to="/rmatic/dashboard"/>
+          }
+        ]
+      },{
+        id:"rbnb",
+        path:'/rbnb', 
+        component:BnbTemplate, 
+        routes:[
+          {
+            id:"rbnb_dashboard",
+            path:"/rbnb/dashboard",
+            component:BnbDashboard, 
+          },{
+            path: '*',
+            component: () => <Redirect to="/rbnb/dashboard"/>
           }
         ]
       },{

@@ -1,31 +1,33 @@
 
-import Web3 from 'web3';
 import config from '@config/index';
-import {api} from '@util/http';
+import { api } from '@util/http';
+import Web3 from 'web3';
 
 declare const window: any;
 let web3Instance:any=null;
+let bscWeb3Instance:any=null;
+
 export default class Index{
   getWeb3(){
     if (web3Instance) {
       return web3Instance;
     }
   
-    // let provider;
-    // if (window.ethereum) {
-    //   provider = window.ethereum;
-    // } else if (window.web3) {
-    //   provider = window.web3.currentProvider;
-    // } else {
-    //   return new Web3.providers.WebsocketProvider("wss://eth-mainnet.ws.alchemyapi.io/v2/bkdml_X06uuwFV4-KONSO3NoPHkIIv8Z");
-    // }
-
     let provider = new Web3.providers.WebsocketProvider("wss://eth-mainnet.ws.alchemyapi.io/v2/bkdml_X06uuwFV4-KONSO3NoPHkIIv8Z");
-  
     web3Instance = new Web3(provider);
-  
     return web3Instance;
   }
+
+  getBSCWeb3(){
+    if (bscWeb3Instance) {
+      return bscWeb3Instance;
+    }
+  
+    let provider = new Web3.providers.WebsocketProvider("wss://speedy-nodes-nyc.moralis.io/5a284cffde906505c6eb2af8/bsc/mainnet/ws");
+    bscWeb3Instance = new Web3(provider);
+    return bscWeb3Instance;
+  }
+
   getRETHTokenAddress(){
     return config.rETHTokenAddress();
   }

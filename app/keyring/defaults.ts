@@ -19,6 +19,7 @@ enum rSymbol {
   Atom = 3,
   Eth = 4,
   Matic = 5,
+  Bnb = 6,
 }
 
 export { Symbol, rSymbol };

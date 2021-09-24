@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import AtomServer from "@servers/atom";
+import BnbServer from "@servers/bnb";
 import EthServer from "@servers/eth/index";
 import KsmServer from "@servers/ksm";
 import MaticServer from "@servers/matic";
@@ -14,6 +15,7 @@ const ksmServer = new KsmServer();
 const dotServer = new DotServer();
 const atomServer = new AtomServer();
 const maticServer = new MaticServer();
+const bnbServer = new BnbServer();
 
 const ETHClice = createSlice({
   name: "ETHModule",
@@ -25,6 +27,7 @@ const ETHClice = createSlice({
     ercRDOTBalance: "--",
     ercRATOMBalance: "--",
     ercRMATICBalance: "--",
+    bepRBNBBalance: "--",
 
     totalStakedAmount: "--",
     ratio: "--",
@@ -51,6 +54,9 @@ const ETHClice = createSlice({
     setErcRMATICBalance(state, { payload }) {
       state.ercRMATICBalance = payload;
     },
+    setBepRBNBBalance(state, { payload }) {
+      state.bepRBNBBalance = payload;
+    },
     setRatio(state, { payload }) {
       state.ratio = payload;
     },
@@ -68,6 +74,7 @@ export const {
   setErcRDOTBalance,
   setErcRATOMBalance,
   setErcRMATICBalance,
+  setBepRBNBBalance,
   setRatio,
   setTotalStakedAmount,
 } = ETHClice.actions;
@@ -80,7 +87,9 @@ export const getAssetBalanceAll = (): AppThunk => (dispatch, getState) => {
   dispatch(getRDOTAssetBalance());
   dispatch(getRATOMAssetBalance());
   dispatch(getRMATICAssetBalance());
+  dispatch(getRBNBAssetBalance());
 };
+
 export const getETHAssetBalance = (): AppThunk => (dispatch, getState) => {
   getAssetBalance(
     ethServer.getRETHTokenAbi(),
@@ -148,12 +157,24 @@ export const getRMATICAssetBalance = (): AppThunk => (dispatch, getState) => {
   );
 };
 
+export const getRBNBAssetBalance = (): AppThunk => (dispatch, getState) => {
+  getAssetBalance(
+    bnbServer.getBep20RTokenAbi(),
+    bnbServer.getBep20RTokenAddress(),
+    (v: any) => {
+      dispatch(setBepRBNBBalance(NumberUtil.handleFisAmountToFixed(v)));
+    },
+    true
+  );
+};
+
 const getAssetBalance = (
   getTokenAbi: string,
   tokenAddress: string,
-  cb?: Function
+  cb: Function,
+  isBep?: boolean
 ) => {
-  let web3 = ethServer.getWeb3();
+  let web3 = isBep ? ethServer.getBSCWeb3() : ethServer.getWeb3();
   let contract = new web3.eth.Contract(getTokenAbi, tokenAddress);
   try {
     contract.methods

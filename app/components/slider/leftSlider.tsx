@@ -1,4 +1,5 @@
 import atom_svg from "@images/atom.svg";
+import bnb_svg from "@images/bnb.svg";
 import dot_svg from "@images/dot.svg";
 import eth_svg from "@images/eth.svg";
 import fis_svg from "@images/fis.svg";
@@ -7,6 +8,7 @@ import ksm_svg from "@images/ksm.svg";
 import logo from "@images/logo.svg";
 import matic_svg from "@images/matic.svg";
 import selected_atom_svg from "@images/selected_atom.svg";
+import selected_bnb_svg from "@images/selected_bnb.svg";
 import selected_dot_svg from "@images/selected_dot.svg";
 import selected_eth_svg from "@images/selected_eth.svg";
 import selected_fis_svg from "@images/selected_fis.svg";
@@ -38,6 +40,13 @@ const dataList = [
     keyWord: "rfis",
   },
   {
+    title: "atom",
+    icon: atom_svg,
+    selected_icon: selected_atom_svg,
+    url: "/ratom/dashboard",
+    keyWord: "ratom",
+  },
+  {
     title: "dot",
     icon: dot_svg,
     selected_icon: selected_dot_svg,
@@ -45,18 +54,11 @@ const dataList = [
     keyWord: "rdot",
   },
   {
-    title: "ksm",
-    icon: ksm_svg,
-    selected_icon: selected_ksm_svg,
-    url: "/rksm/dashboard",
-    keyWord: "rksm",
-  },
-  {
-    title: "atom",
-    icon: atom_svg,
-    selected_icon: selected_atom_svg,
-    url: "/ratom/dashboard",
-    keyWord: "ratom",
+    title: "bnb",
+    icon: bnb_svg,
+    selected_icon: selected_bnb_svg,
+    url: "/rbnb/dashboard",
+    keyWord: "rbnb",
   },
   {
     title: "matic",
@@ -65,6 +67,13 @@ const dataList = [
     url: "/rmatic/dashboard",
     keyWord: "rmatic",
   },
+  {
+    title: "ksm",
+    icon: ksm_svg,
+    selected_icon: selected_ksm_svg,
+    url: "/rksm/dashboard",
+    keyWord: "rksm",
+  },
 ];
 export default function Index(props: any) {
   return (
@@ -72,7 +81,7 @@ export default function Index(props: any) {
       <div className="logoPanel">
         <img src={logo} />
       </div>
-      
+
       <div className="icons">
         {dataList.map((item) => {
           return (

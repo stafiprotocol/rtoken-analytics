@@ -57,6 +57,13 @@ export default {
       return '0x1a80c8874e4bf1516c02aa92b838b33e11cde7e8';
     }  
   },
+  rBNBBep20TokenAddress: () => {
+    if (!isdev()) {
+      return '0xf027e525d491ef6ffcc478555fbb3cfabb3406a6';
+    } else {
+      return '0xa8cc91264ddd4430b3e5b95d1ea701dcee734f14';
+    }
+  },
   rETHTokenAddress: ()=>{ 
     if(!isdev()){
       return '0x9559aaa82d9649c7a7b220e7c461d2e74c9a3593';
