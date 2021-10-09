@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import LeftSlider from '@components/slider/leftSlider'
-import {renderRoutes}  from 'react-router-config';  
-import {getAssetBalanceAll} from '@features/ETHClice';
-import {Spin} from 'antd'; 
-import './index.scss'
-import { useDispatch, useSelector } from 'react-redux';
+import LeftSlider from '@components/slider/leftSlider';
+import { getAssetBalanceAll } from '@features/ETHClice';
+import { Spin } from 'antd';
 import { RootState } from 'app/store';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { renderRoutes } from 'react-router-config';
+import './index.scss';
+
 export default function index(props:any){ 
   const dispatch=useDispatch();
   useEffect(()=>{

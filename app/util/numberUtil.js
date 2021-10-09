@@ -162,22 +162,10 @@ export default {
         return Number(amount) / Number(1000000000000000000n);
       case rSymbol.Bnb:
         return Number(amount) / Number(100000000);
+      case rSymbol.Sol:
+        return Number(amount) / Number(1000000000);
       default:
         return amount / 1000000000000;
-    }
-  },
-  tokenAmountToChain(amount, symbol) {
-    switch (symbol) {
-      case rSymbol.Dot:
-        return Math.round(Number(amount) * 10000000000);
-      case rSymbol.Atom:
-        return Math.round(Number(amount) * 1000000);
-      case rSymbol.Fis:
-        return Math.round(Number(amount) * 1000000000000);
-      case rSymbol.Ksm:
-        return Math.round(Number(amount) * 1000000000000);
-      default:
-        return Math.round(Number(amount) * 1000000000000);
     }
   },
   fisFeeToHuman(fee) {

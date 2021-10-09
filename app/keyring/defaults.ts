@@ -12,12 +12,13 @@ enum Symbol {
 }
 
 enum rSymbol {
+  Eth = -2,
   Asset = -1,
   Fis = 0,
   Dot = 1,
   Ksm = 2,
   Atom = 3,
-  Eth = 4,
+  Sol = 4,
   Matic = 5,
   Bnb = 6,
 }

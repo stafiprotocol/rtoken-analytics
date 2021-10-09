@@ -17,6 +17,8 @@ import KsmDashboard from './pages/rKSM/dashboard';
 import KsmTemplate from './pages/rKSM/template';
 import MaticDashboard from './pages/rMATIC/dashboard';
 import MaticTemplate from './pages/rMATIC/template';
+import SolDashboard from './pages/rSOL/dashboard';
+import SolTemplate from './pages/rSOL/template';
 // import authorizedRoute from '@components/route/authorizedRoute';
 import RootTemplate from './pages/template/rootTemplate';
 
@@ -142,6 +144,20 @@ const routesFactory=(role?:any)=>{
           },{
             path: '*',
             component: () => <Redirect to="/rbnb/dashboard"/>
+          }
+        ]
+      },{
+        id:"rsol",
+        path:'/rsol', 
+        component:SolTemplate, 
+        routes:[
+          {
+            id:"rsol_dashboard",
+            path:"/rsol/dashboard",
+            component:SolDashboard, 
+          },{
+            path: '*',
+            component: () => <Redirect to="/rsol/dashboard"/>
           }
         ]
       },{

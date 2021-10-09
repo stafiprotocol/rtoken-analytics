@@ -15,8 +15,11 @@ import selected_fis_svg from "@images/selected_fis.svg";
 import selected_home_svg from "@images/selected_home.png";
 import selected_ksm_svg from "@images/selected_ksm.svg";
 import selected_matic_svg from "@images/selected_matic.svg";
+import selected_sol_svg from "@images/selected_sol.svg";
+import sol_svg from "@images/sol.svg";
 import React from "react";
 import "./leftSlider.scss";
+
 const dataList = [
   {
     title: "home",
@@ -59,6 +62,13 @@ const dataList = [
     selected_icon: selected_bnb_svg,
     url: "/rbnb/dashboard",
     keyWord: "rbnb",
+  },
+  {
+    title: "sol",
+    icon: sol_svg,
+    selected_icon: selected_sol_svg,
+    url: "/rsol/dashboard",
+    keyWord: "rsol",
   },
   {
     title: "matic",

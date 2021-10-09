@@ -142,6 +142,7 @@ export enum Rtoken {
   rFis = "Rfis",
   rMatic = "Rmatic",
   rBnb = "Rbnb",
+  rSol = "Rsol",
 }
 export enum Cycle {
   day = 1,
