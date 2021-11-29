@@ -22,11 +22,13 @@ export default function Index(props: any) {
           title={"FIS TOTAL SUPPLY"}
           amount={data ? data.fisTokenInfo.totalSupply : "--"}
           toolTip={"test"}
+          decimals={2}
         />
         <DataCol
           title={"FIS CIRCULATING SUPPLY"}
           amount={data ? data.fisTokenInfo.circulating : "--"}
           toolTip={"test"}
+          decimals={2}
         />
         <DataCol
           title={"FIS PRICE"}
