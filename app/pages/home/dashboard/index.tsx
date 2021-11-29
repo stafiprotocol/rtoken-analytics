@@ -20,13 +20,11 @@ export default function Index(props: any) {
       <DataRow>
         <DataCol
           title={"FIS TOTAL SUPPLY"}
-          unit="$"
           amount={data ? data.fisTokenInfo.totalSupply : "--"}
           toolTip={"test"}
         />
         <DataCol
           title={"FIS CIRCULATING SUPPLY"}
-          unit="$"
           amount={data ? data.fisTokenInfo.circulating : "--"}
           toolTip={"test"}
         />
