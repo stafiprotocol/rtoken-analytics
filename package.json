@@ -1,5 +1,5 @@
 {
-  "name": "stafi-rtoken",
+  "name": "rtoken-analytics",
   "version": "1.0.1",
   "description": "",
   "main": "app/components/index.tsx",
@@ -10,8 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "shanzhiping",
-  "registory": "https://github.com/stafiprotocol/stafi-rtoken",
+  "author": "Stafi Technologies",
+  "registory": "https://github.com/stafiprotocol/rtoken-analytics",
   "dependencies": {
     "@ant-design/icons": "^4.5.0",
     "@polkadot/api": "^4.6.2",
