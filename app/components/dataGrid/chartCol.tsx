@@ -1,5 +1,6 @@
 import React from "react";
 import { Col } from "antd";
+import numberUtil from "../../util/numberUtil";
 
 import ReactEcharts from "echarts-for-react";
 import "./col.scss";
@@ -24,6 +25,7 @@ export default function Index(props: Props) {
           type: "line",
         },
         formatter: (params: any) => {
+          // console.log("params[0]", params[0]);
           try {
             if (params[0]) {
               return (
@@ -35,7 +37,7 @@ export default function Index(props: Props) {
                 params[0].marker +
                 "value   " +
                 "<b>" +
-                params[0].value +
+                numberUtil.amount_format(params[0].value, 3) +
                 "</b>"
               );
             }
@@ -53,15 +55,14 @@ export default function Index(props: Props) {
           },
           axisLabel: {
             interval: 0,
-            rotate: -40,
+            rotate: -50,
             color: "#A5A5A5",
-            // formatter: (value: string) => {
-            //   console.log("value", value);
-            //   return `${value.slice(4, 6)}-${value.slice(6, 8)}-${value.slice(
-            //     0,
-            //     4
-            //   )}`;
-            // },
+            formatter: (value: string) => {
+              return `${value.slice(4, 6)}-${value.slice(6, 8)}-${value.slice(
+                0,
+                4
+              )}`;
+            },
           },
         },
       ],
